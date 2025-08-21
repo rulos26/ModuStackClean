@@ -1,0 +1,91 @@
+============================================================
+INFORMACIÓN DEL SISTEMA - GESTOR DE DESCARGAS
+============================================================
+
+SISTEMA OPERATIVO:
+--------------------
+Nombre: Windows
+Versión: 10.0.19045
+Release: 10
+Arquitectura: 64bit
+Hostname: SISM75SANZV
+
+HARDWARE:
+--------------------
+CPU: Desconocido
+Núcleos físicos: 8
+Núcleos lógicos: 16
+Frecuencia: 3801.00 MHz
+Uso actual: 5.2%
+GPU:
+  - No detectada
+
+MEMORIA:
+--------------------
+Total: 15.35 GB
+Usada: 13.73 GB (89.4%)
+Disponible: 1.63 GB
+Swap: 3.58 GB / 31.00 GB
+
+ALMACENAMIENTO:
+--------------------
+Dispositivo: C:\
+Punto de montaje: C:\
+Total: 100.45 GB
+Usado: 94.06 GB (93.6%)
+Libre: 6.39 GB
+
+Dispositivo: D:\
+Punto de montaje: D:\
+Total: 852.17 GB
+Usado: 495.52 GB (58.1%)
+Libre: 356.65 GB
+
+RED:
+--------------------
+
+PYTHON:
+--------------------
+Versión: 3.13.1 (tags/v3.13.1:0671451, Dec  3 2024, 19:06:28) [MSC v.1942 64 bit (AMD64)]
+Ejecutable: C:\Python313\python.exe
+Plataforma: win32
+
+TIEMPO:
+--------------------
+Fecha actual: 2025-08-21 09:27:16
+Zona horaria: Hora est. Pacífico, Sudamérica
+Uptime del sistema: 2 days, 0:38:12
+
+USUARIOS CONECTADOS:
+--------------------
+Usuario: jdiazl
+  Terminal: None
+  Host: None
+  Inicio de sesión: 2025-08-20 08:35:49
+
+PROCESOS (Top 10 por CPU):
+--------------------
+System Idle Process (PID: 0)
+  CPU: 0.0% | RAM: 0.0%
+System (PID: 4)
+  CPU: 0.0% | RAM: 0.0%
+ (PID: 104)
+  CPU: 0.0% | RAM: 0.3%
+Registry (PID: 180)
+  CPU: 0.0% | RAM: 0.4%
+smss.exe (PID: 544)
+  CPU: 0.0% | RAM: 0.0%
+wininit.exe (PID: 672)
+  CPU: 0.0% | RAM: 0.0%
+svchost.exe (PID: 756)
+  CPU: 0.0% | RAM: 0.1%
+csrss.exe (PID: 892)
+  CPU: 0.0% | RAM: 0.0%
+csrss.exe (PID: 920)
+  CPU: 0.0% | RAM: 0.0%
+services.exe (PID: 1088)
+  CPU: 0.0% | RAM: 0.1%
+
+============================================================
+Reporte generado el: 2025-08-21 09:27:27
+============================================================

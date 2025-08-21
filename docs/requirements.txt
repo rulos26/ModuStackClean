@@ -1,0 +1,18 @@
+# Gestor de Archivos de Descargas
+# Este programa usa solo módulos estándar de Python
+# No se requieren librerías adicionales
+
+# Versión mínima de Python requerida
+# Python >= 3.6
+
+# Módulos estándar utilizados:
+# - os
+# - shutil  
+# - datetime
+# - pathlib
+# - sys
+
+# Para desarrollo (opcional):
+# - pytest (para pruebas unitarias)
+# - black (para formateo de código)
+# - flake8 (para linting)

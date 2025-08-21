@@ -1,0 +1,205 @@
+🔧 INFORMACIÓN DEL SISTEMA - VERSIÓN PYTHON
+============================================
+
+📋 DESCRIPCIÓN:
+La nueva funcionalidad "Información del Sistema" en Python te permite obtener un análisis
+completo y detallado del hardware y software de tu computadora, con opciones de exportación.
+
+🚀 FUNCIONALIDADES DISPONIBLES:
+
+1. 📊 SCRIPT PRINCIPAL: info_sistema.py
+   - Información completa del sistema en tiempo real
+   - Análisis detallado de hardware y software
+   - Generación de reportes en formato texto
+   - Compatible con Windows, Linux y macOS
+
+2. 🔧 INTEGRACIÓN EN GESTOR: gestor_descargas.py
+   - Opción 7: "Información del sistema"
+   - Resumen rápido del sistema
+   - Acceso directo desde el menú principal
+
+3. 📦 INSTALADOR: instalar_dependencias.py
+   - Instalación automática de dependencias
+   - Verificación de paquetes necesarios
+   - Configuración completa del entorno
+
+💻 INFORMACIÓN RECOPILADA:
+
+SISTEMA OPERATIVO:
+- Nombre y versión del SO
+- Arquitectura (32/64 bits)
+- Hostname y plataforma
+- Información del procesador
+
+HARDWARE:
+- CPU: Nombre, núcleos físicos/lógicos, frecuencia, uso actual
+- GPU: Tarjetas gráficas detectadas con memoria
+- RAM: Total, usado, disponible, swap
+- Almacenamiento: Discos, particiones, espacio libre
+
+RED:
+- Interfaces de red activas
+- Direcciones IP
+- Estadísticas de tráfico (bytes enviados/recibidos)
+
+SOFTWARE:
+- Versión de Python y módulos cargados
+- Información del ejecutable
+- Plataforma de ejecución
+
+PROCESOS:
+- Top 10 procesos por uso de CPU
+- Información de memoria por proceso
+- PID y nombres de procesos
+
+USUARIOS:
+- Usuarios conectados actualmente
+- Terminal y host de conexión
+- Tiempo de inicio de sesión
+
+TIEMPO:
+- Fecha y hora actual
+- Zona horaria
+- Uptime del sistema
+
+📦 INSTALACIÓN:
+
+1. INSTALAR DEPENDENCIAS:
+   python instalar_dependencias.py
+
+2. O INSTALACIÓN MANUAL:
+   pip install psutil reportlab matplotlib numpy
+
+3. VERIFICAR INSTALACIÓN:
+   python info_sistema.py
+
+🔧 USO:
+
+1. DESDE EL GESTOR PRINCIPAL:
+   python gestor_descargas.py
+   → Seleccionar opción 7: "Información del sistema"
+
+2. SCRIPT INDEPENDIENTE:
+   python info_sistema.py
+   → Muestra resumen y opción de guardar reporte completo
+
+3. GENERAR REPORTE:
+   - El script pregunta si quieres guardar un reporte
+   - Se guarda automáticamente con timestamp
+   - Formato: informacion_sistema_YYYYMMDD_HHMMSS.txt
+
+📊 VENTAJAS DE LA VERSIÓN PYTHON:
+
+✅ MÁS DETALLADA:
+- Información más profunda del hardware
+- Análisis de procesos en tiempo real
+- Estadísticas de red completas
+
+✅ MÁS RÁPIDA:
+- Optimizada para Python
+- Sin dependencias de servidor web
+- Ejecución directa en consola
+
+✅ MÁS COMPATIBLE:
+- Funciona en Windows, Linux, macOS
+- No requiere servidor web
+- Independiente del entorno PHP
+
+✅ MÁS FLEXIBLE:
+- Fácil de modificar y extender
+- Código fuente disponible
+- Integración con otros scripts Python
+
+🛠️ CONFIGURACIÓN AVANZADA:
+
+PERSONALIZAR INFORMACIÓN:
+- Editar info_sistema.py para agregar más datos
+- Modificar formatear_tamaño() para diferentes unidades
+- Agregar nuevas categorías de información
+
+EXPORTAR EN DIFERENTES FORMATOS:
+- Modificar guardar_reporte() para otros formatos
+- Agregar exportación a JSON, CSV, XML
+- Integrar con bases de datos
+
+AUTOMATIZAR REPORTES:
+- Programar ejecución con cron (Linux/macOS)
+- Usar Task Scheduler (Windows)
+- Enviar reportes por email
+
+⚠️ NOTAS IMPORTANTES:
+
+PERMISOS:
+- Algunas funciones requieren permisos de administrador
+- En Windows, ejecutar como administrador para información completa
+- En Linux, usar sudo para acceso completo al hardware
+
+PRIVACIDAD:
+- El reporte incluye información sensible del sistema
+- Mantener los archivos de reporte seguros
+- No compartir información de red públicamente
+
+COMPATIBILIDAD:
+- psutil 5.8.0+ recomendado
+- Python 3.6+ requerido
+- Algunas funciones pueden no estar disponibles en entornos restringidos
+
+🔄 ACTUALIZACIONES:
+
+MANTENER ACTUALIZADO:
+- Actualizar psutil regularmente: pip install --upgrade psutil
+- Verificar nuevas versiones de Python
+- Revisar cambios en las APIs del sistema
+
+📞 SOPORTE:
+
+PROBLEMAS COMUNES:
+1. "psutil no está instalado":
+   → Ejecutar: python instalar_dependencias.py
+
+2. "Información de hardware no disponible":
+   → Ejecutar como administrador
+   → Verificar permisos del sistema
+
+3. "Error al acceder a /proc/":
+   → Verificar permisos en Linux
+   → Usar sudo si es necesario
+
+4. "Comandos WMIC no funcionan":
+   → Verificar que WMIC esté disponible en Windows
+   → Ejecutar como administrador
+
+LOGS Y DEBUG:
+- Los errores se muestran en consola
+- Usar try/except para capturar errores específicos
+- Verificar la salida de subprocess.run() para comandos del sistema
+
+📝 EJEMPLOS DE USO:
+
+1. REPORTE RÁPIDO:
+   python info_sistema.py
+   → Resumen en pantalla
+
+2. REPORTE COMPLETO:
+   python info_sistema.py
+   → Resumen + reporte guardado
+
+3. DESDE GESTOR:
+   python gestor_descargas.py
+   → Opción 7 para información del sistema
+
+4. INSTALACIÓN COMPLETA:
+   python instalar_dependencias.py
+   → Instalar todas las dependencias
+
+🎯 PRÓXIMAS MEJORAS:
+
+FUTURAS VERSIONES:
+- Exportación a PDF con ReportLab
+- Gráficos con Matplotlib
+- Monitoreo en tiempo real
+- Alertas de rendimiento
+- Integración con APIs de hardware
+- Reportes programados automáticos
+
+¡La versión Python ofrece una experiencia más completa y profesional para el análisis del sistema!

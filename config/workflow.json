@@ -1,0 +1,59 @@
+{
+  "sistema": {
+    "nombre": "ModuStackClean",
+    "version": "1.0.0",
+    "descripcion": "Sistema de organización y gestión de archivos"
+  },
+  "estructura": {
+    "web": {
+      "backend": "Archivos PHP principales del sistema",
+      "frontend": "Interfaces de usuario y assets",
+      "assets": "Recursos estáticos (CSS, JS, imágenes)"
+    },
+    "python": {
+      "scripts": "Scripts Python para automatización",
+      "modules": "Módulos Python reutilizables"
+    },
+    "docs": {
+      "guides": "Guías de uso e instrucciones",
+      "api": "Documentación de API"
+    },
+    "tests": {
+      "unit": "Pruebas unitarias",
+      "integration": "Pruebas de integración"
+    },
+    "utils": {
+      "tools": "Herramientas de utilidad"
+    },
+    "config": {
+      "installation": "Archivos de instalación y configuración"
+    }
+  },
+  "flujo_trabajo": {
+    "entrada": "index.php",
+    "backend_principal": "web/backend/index.php",
+    "scripts_python": "python/scripts/",
+    "documentacion": "docs/",
+    "pruebas": "tests/unit/"
+  },
+  "archivos_principales": {
+    "php": [
+      "web/backend/index.php",
+      "web/backend/index_automatico.php",
+      "web/backend/index_simple.php",
+      "web/backend/funciones.php",
+      "web/backend/funciones_simple.php"
+    ],
+    "python": [
+      "python/scripts/servidor_automatico.py",
+      "python/scripts/gestor_descargas.py",
+      "python/scripts/info_sistema.py",
+      "python/scripts/diagnostico_descargas.py"
+    ],
+    "instalacion": [
+      "src/core/installation/instalar_dependencias.py",
+      "src/core/installation/instalar_dependencias_python.py",
+      "src/core/installation/instalar.bat"
+    ]
+  }
+}
