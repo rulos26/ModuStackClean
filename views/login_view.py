@@ -11,10 +11,10 @@ from utils.ui_components import create_gradient_container
 class LoginView(ft.Container):
     """Vista de login de usuarios"""
     
-    def __init__(self, page: ft.Page, config, db_manager, session_manager, on_login_success=None):
+    def __init__(self, page: ft.Page, config, api_manager, session_manager, on_login_success=None):
         self.page = page
         self.config = config
-        self.db_manager = db_manager
+        self.api_manager = api_manager
         self.session_manager = session_manager
         self.on_login_success = on_login_success
         
@@ -235,14 +235,13 @@ class LoginView(ft.Container):
     def update_connection_info(self):
         """Actualizar información de conexión"""
         try:
-            info = self.db_manager.get_connection_info()
+            info = self.api_manager.get_connection_info()
             if info["status"] == "connected":
-                db_type = "Remota" if info["type"] == "remote" else "Local"
-                self.connection_info.value = f"🔗 Conectado a BD {db_type} ({info['host']})"
+                self.connection_info.value = f"🔗 Conectado a API ({info['url']})"
                 self.connection_info.color = "green"
                 self.super_user_note.visible = False  # Ocultar nota cuando hay conexión
             else:
-                self.connection_info.value = "❌ Sin conexión a BD - 💡 Usa 'root' / 'root' para acceso offline"
+                self.connection_info.value = "❌ Sin conexión a API - 💡 Usa 'root' / 'root' para acceso offline"
                 self.connection_info.color = "orange"
                 self.super_user_note.visible = True  # Mostrar nota cuando no hay conexión
         except Exception as e:
@@ -319,9 +318,9 @@ class LoginView(ft.Container):
                 self.show_error_message("Por favor ingresa un correo válido")
                 return
             
-            # Intentar login normal con base de datos
+            # Intentar login normal con API
             try:
-                success, message, usuario = self.db_manager.login_usuario(email, password)
+                success, message, usuario = self.api_manager.login_usuario(email, password)
                 
                 if success and usuario:
                     # Iniciar sesión
@@ -336,9 +335,9 @@ class LoginView(ft.Container):
                 else:
                     self.show_error_message(f"❌ {message}")
                     
-            except Exception as db_error:
-                # Si hay error de base de datos, sugerir usar super usuario
-                self.show_error_message(f"❌ Error de conexión a BD: {str(db_error)[:50]}\n💡 Usa 'root' / 'root' para acceso offline")
+            except Exception as api_error:
+                # Si hay error de API, sugerir usar super usuario
+                self.show_error_message(f"❌ Error de conexión a API: {str(api_error)[:50]}\n💡 Usa 'root' / 'root' para acceso offline")
             
         except Exception as ex:
             self.show_error_message(f"❌ Error inesperado: {str(ex)}")
@@ -353,7 +352,7 @@ class LoginView(ft.Container):
         register_view = RegisterView(
             self.page,
             self.config,
-            self.db_manager,
+            self.api_manager,
             on_register_success=self.on_register_success,
             on_back_to_login=self.on_back_to_login
         )
@@ -382,10 +381,10 @@ class LoginView(ft.Container):
 class RegisterView(ft.Container):
     """Vista de registro de usuarios"""
     
-    def __init__(self, page: ft.Page, config, db_manager, on_register_success=None, on_back_to_login=None):
+    def __init__(self, page: ft.Page, config, api_manager, on_register_success=None, on_back_to_login=None):
         self.page = page
         self.config = config
-        self.db_manager = db_manager
+        self.api_manager = api_manager
         self.on_register_success = on_register_success
         self.on_back_to_login = on_back_to_login
         
@@ -640,7 +639,7 @@ class RegisterView(ft.Container):
             self.page.update()
             
             # Intentar registro
-            success, message, user_id = self.db_manager.create_usuario(name, email, password)
+            success, message, user_id = self.api_manager.create_usuario(name, email, password)
             
             if success and user_id:
                 self.show_success_message(f"✅ Usuario registrado exitosamente!")

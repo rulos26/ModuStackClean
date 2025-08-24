@@ -2,20 +2,20 @@
 # -*- coding: utf-8 -*-
 """
 ModuStackClean - Aplicación Flet
-Aplicación principal con sistema de login y gestión de base de datos
+Aplicación principal con sistema de login y gestión de API
 """
 
 import flet as ft
 from views.home_view import HomeView
 from views.login_view import LoginView
 from config.app_config import AppConfig
-from config.database_manager import DatabaseManager
+from config.api_manager import APIManager
 from utils.session_manager import SessionManager
 
 class ModuStackCleanApp:
     def __init__(self):
         self.config = AppConfig()
-        self.db_manager = DatabaseManager()
+        self.api_manager = APIManager()
         self.session_manager = SessionManager()
         self.current_page = None
         
@@ -45,13 +45,12 @@ class ModuStackCleanApp:
             self.show_login_view()
     
     def show_connection_status(self):
-        """Mostrar estado de conexión a base de datos"""
-        if self.db_manager.is_connected():
-            connection_info = self.db_manager.get_connection_info()
-            db_type = "Remota" if connection_info["type"] == "remote" else "Local"
-            print(f"✅ Conectado a base de datos {db_type}")
+        """Mostrar estado de conexión a la API"""
+        if self.api_manager.is_connected():
+            connection_info = self.api_manager.get_connection_info()
+            print(f"✅ Conectado a API: {connection_info['url']}")
         else:
-            print("❌ Sin conexión a base de datos")
+            print("❌ Sin conexión a API - Modo offline activado")
     
     def show_login_view(self):
         """Mostrar vista de login"""
@@ -59,7 +58,7 @@ class ModuStackCleanApp:
         login_view = LoginView(
             self.current_page,
             self.config,
-            self.db_manager,
+            self.api_manager,
             self.session_manager,
             on_login_success=self.on_login_success
         )

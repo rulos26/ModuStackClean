@@ -125,6 +125,64 @@ if ($clean_path === '/api/usuarios' && $method === 'GET') {
     }
 }
 
+// Endpoint login
+if ($clean_path === '/api/login' && $method === 'POST') {
+    try {
+        // Obtener datos del POST
+        $input = json_decode(file_get_contents('php://input'), true);
+        
+        if (!$input) {
+            respuesta_json(false, "Datos de entrada inválidos", [], 400);
+        }
+        
+        $correo = $input['correo'] ?? '';
+        $password = $input['password'] ?? '';
+        
+        if (empty($correo) || empty($password)) {
+            respuesta_json(false, "Correo y contraseña son requeridos", [], 400);
+        }
+        
+        $conexion = conectar_bd();
+        
+        // Buscar usuario por correo
+        $stmt = $conexion->prepare('SELECT id, nombre, correo, rol, estado, creado_en FROM usuarios WHERE correo = ?');
+        $stmt->bind_param('s', $correo);
+        
+        if (!$stmt->execute()) {
+            throw new Exception('Error ejecutando consulta: ' . $stmt->error);
+        }
+        
+        $res = $stmt->get_result();
+        $usuario = $res->fetch_assoc();
+        
+        if (!$usuario) {
+            respuesta_json(false, "Usuario no encontrado", [], 401);
+        }
+        
+        // Verificar estado del usuario
+        if ($usuario['estado'] != 1) {
+            respuesta_json(false, "Usuario inactivo", [], 401);
+        }
+        
+        // En una implementación real, aquí verificarías la contraseña con hash
+        // Por ahora, asumimos que la contraseña es correcta si el usuario existe
+        // y está activo
+        
+        respuesta_json(true, "Login exitoso", [
+            "usuario" => $usuario
+        ]);
+        
+    } catch (Exception $e) {
+        respuesta_json(false, "Error en login", [
+            "error" => $e->getMessage()
+        ], 500);
+    } finally {
+        if (isset($conexion)) {
+            $conexion->close();
+        }
+    }
+}
+
 // Endpoint prueba
 if ($clean_path === '/api/prueba' && $method === 'GET') {
     try {
