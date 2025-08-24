@@ -5,7 +5,7 @@
 - **Archivo**: ModuStackClean.exe
 - **Ruta**: C:\xampp\htdocs\ModuStackClean\dist\ModuStackClean.exe
 - **Tamaño**: 12.06 MB
-- **Fecha de creación**: 1756066495.2548115
+- **Fecha de creación**: 1756076318.1839423
 
 ## Instrucciones de Uso
 1. El ejecutable es completamente independiente

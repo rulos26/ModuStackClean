@@ -24,6 +24,8 @@ class AppConfig:
         # Configuración de la interfaz
         self.WINDOW_WIDTH = 1200
         self.WINDOW_HEIGHT = 800
+        self.WINDOW_MIN_WIDTH = 800
+        self.WINDOW_MIN_HEIGHT = 600
         self.CARD_RADIUS = 12
         self.BUTTON_RADIUS = 8
         

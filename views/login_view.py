@@ -208,7 +208,7 @@ class LoginView(ft.Container):
                             color="gray",
                             offset=ft.Offset(0, 2)
                         ),
-                        width=450
+                        width=min(450, self.config.WINDOW_WIDTH * 0.4)
                     )
                 ]
             )
@@ -248,6 +248,27 @@ class LoginView(ft.Container):
             self.connection_info.value = f"⚠️ Error de conexión: {str(e)[:50]}\n💡 Usa 'root' / 'root' para acceso offline"
             self.connection_info.color = "orange"
             self.super_user_note.visible = True  # Mostrar nota cuando hay error
+    
+    def update_responsive_layout(self):
+        """Actualizar layout para ser responsive"""
+        # Calcular ancho responsive
+        responsive_width = min(350, self.config.WINDOW_WIDTH * 0.3)
+        
+        # Actualizar campos de texto
+        self.email_field.width = responsive_width
+        self.password_field.width = responsive_width
+        
+        # Actualizar botones
+        self.login_button.width = responsive_width
+        self.register_button.width = responsive_width
+        
+        # Actualizar mensajes
+        self.status_message.width = responsive_width
+        self.connection_info.width = responsive_width
+        
+        # Actualizar página
+        if self.page:
+            self.page.update()
     
     def show_success_message(self, message: str):
         """Mostrar mensaje de éxito"""

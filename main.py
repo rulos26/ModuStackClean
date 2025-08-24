@@ -31,9 +31,14 @@ class ModuStackCleanApp:
         )
         page.window_width = self.config.WINDOW_WIDTH
         page.window_height = self.config.WINDOW_HEIGHT
-        page.window_resizable = False
+        page.window_resizable = True
+        page.window_min_width = self.config.WINDOW_MIN_WIDTH
+        page.window_min_height = self.config.WINDOW_MIN_HEIGHT
         page.padding = 0
         page.spacing = 0
+        
+        # Agregar listener para cambios de tamaño de ventana
+        page.on_resize = self.on_window_resize
         
         # Mostrar información de conexión
         self.show_connection_status()
@@ -89,6 +94,26 @@ class ModuStackCleanApp:
         """Callback cuando se hace logout"""
         print("👋 Logout realizado")
         self.show_login_view()
+    
+    def on_window_resize(self, e):
+        """Manejar cambio de tamaño de ventana"""
+        # Actualizar configuración con nuevo tamaño
+        self.config.WINDOW_WIDTH = e.width
+        self.config.WINDOW_HEIGHT = e.height
+        
+        # Actualizar layout responsive si es necesario
+        if hasattr(self.current_page, 'controls') and self.current_page.controls:
+            for control in self.current_page.controls:
+                if hasattr(control, 'update_responsive_layout'):
+                    control.update_responsive_layout()
+        
+        # Actualizar vista home específicamente
+        if hasattr(self, 'current_page') and self.current_page:
+            for control in self.current_page.controls:
+                if hasattr(control, 'update_responsive_layout'):
+                    control.update_responsive_layout()
+        
+        print(f"🔄 Ventana redimensionada a: {e.width}x{e.height}")
 
 def main():
     """Punto de entrada de la aplicación"""
