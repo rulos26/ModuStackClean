@@ -3,9 +3,9 @@
 
 ## Información del Ejecutable
 - **Archivo**: ModuStackClean.exe
-- **Ruta**: C:\xampp\htdocs\ModuStackClean\flet_app\dist\ModuStackClean.exe
-- **Tamaño**: 68.31 MB
-- **Fecha de creación**: 1755898025.800361
+- **Ruta**: C:\xampp\htdocs\ModuStackClean\dist\ModuStackClean.exe
+- **Tamaño**: 12.06 MB
+- **Fecha de creación**: 1756066495.2548115
 
 ## Instrucciones de Uso
 1. El ejecutable es completamente independiente
