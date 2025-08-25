@@ -11,11 +11,12 @@ from utils.ui_components import create_gradient_container
 class HomeView(ft.Container):
     """Vista principal con menú lateral y diseño moderno"""
     
-    def __init__(self, page: ft.Page, config, session_manager=None, on_logout=None):
+    def __init__(self, page: ft.Page, config, session_manager=None, on_logout=None, on_navigate_to_path=None):
         self.page = page
         self.config = config
         self.session_manager = session_manager
         self.on_logout = on_logout
+        self.on_navigate_to_path = on_navigate_to_path
         self.current_user = None
         
         # Obtener información del usuario
@@ -115,7 +116,7 @@ class HomeView(ft.Container):
             },
             {
                 "icon": "folder",
-                "label": "Archivos",
+                "label": "Path",
                 "active": False,
                 "on_click": self._on_menu_item_click
             },
@@ -506,12 +507,16 @@ class HomeView(ft.Container):
     def _on_menu_item_click(self, e):
         """Manejar clic en elementos del menú"""
         item = e.control.data
-        self.page.show_snack_bar(
-            ft.SnackBar(
-                content=ft.Text(f"Navegando a: {item['label']}"),
-                action="OK"
+        
+        if item["label"] == "Path" and self.on_navigate_to_path:
+            self.on_navigate_to_path()
+        else:
+            self.page.show_snack_bar(
+                ft.SnackBar(
+                    content=ft.Text(f"Navegando a: {item['label']}"),
+                    action="OK"
+                )
             )
-        )
     
     def _handle_logout(self, e):
         """Manejar logout de usuario"""
@@ -523,12 +528,8 @@ class HomeView(ft.Container):
     
     def _on_get_started_click(self, e):
         """Manejar clic en botón comenzar"""
-        self.page.show_snack_bar(
-            ft.SnackBar(
-                content=ft.Text("🚀 ¡Bienvenido a ModuStackClean! Comenzando..."),
-                action="OK"
-            )
-        )
+        if self.on_navigate_to_path:
+            self.on_navigate_to_path()
     
     def update_responsive_layout(self):
         """Actualizar layout para ser responsive"""
